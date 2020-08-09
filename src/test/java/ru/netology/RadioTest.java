@@ -13,6 +13,12 @@ class RadioTest {
         radioStation.nextCurrentRadioStation();
         assertEquals(6, radioStation.getCurrentRadioStation());
     }
+    @Test
+    public void shouldNextCurrentRadioStation99() {
+        Radio radioStation = new Radio(99, 67, 5);
+        radioStation.nextCurrentRadioStation();
+        assertEquals(68, radioStation.getCurrentRadioStation());
+    }
 
     @Test
     public void shouldNextMaxCurrentRadioStation() {
@@ -60,35 +66,30 @@ class RadioTest {
     }
 
     @Test
-    public void shouldPlusCurrentVolumeFor11() {
-        Radio volume = new Radio();
+    public void shouldPlusCurrentVolumeFor100() {
+        Radio volume = new Radio(5,5, 100);
         volume.plusCurrentVolume();
+        assertEquals(100, volume.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldPlusCurrentVolumeFor50() {
+        Radio volume = new Radio(5,5, 50);
         volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        volume.plusCurrentVolume();
-        assertEquals(10, volume.getCurrentVolume());
+        assertEquals(51, volume.getCurrentVolume());
     }
 
     @Test
     public void shouldMinusCurrentVolumeFor0() {
-        Radio volume = new Radio();
+        Radio volume = new Radio(5, 5, 0);
         volume.minusCurrentVolume();
         assertEquals(0, volume.getCurrentVolume());
     }
 
     @Test
     public void shouldMinusCurrentVolumeFor1() {
-        Radio volume = new Radio();
-        volume.plusCurrentVolume();
+        Radio volume = new Radio(5, 5, 1);
         volume.minusCurrentVolume();
         assertEquals(0, volume.getCurrentVolume());
     }
-
 }
