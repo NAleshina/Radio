@@ -1,5 +1,10 @@
 package ru.netology;
 
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int maxRadioStation = 9;
     private int minRadioStation = 0;
@@ -8,28 +13,6 @@ public class Radio {
     private int minVolume = 0;
     private int currentVolume;
     private boolean on;
-
-    public Radio() {
-
-    }
-
-    public Radio(int maxRadioStation, int currentRadioStation, int currentVolume) {
-        this.maxRadioStation = maxRadioStation;
-        this.currentRadioStation = currentRadioStation;
-        this.currentVolume = currentVolume;
-    }
-
-    public int getMaxRadioStation() {
-        return maxRadioStation;
-    }
-
-    public int getMinRadioStation() {
-        return minRadioStation;
-    }
-
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation > maxRadioStation) {
@@ -41,19 +24,10 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
     public void nextCurrentRadioStation() {
         if (currentRadioStation == maxRadioStation) {
             currentRadioStation = minRadioStation;
-        }
-        else {
+        } else {
             currentRadioStation++;
         }
     }
@@ -61,22 +35,9 @@ public class Radio {
     public void prevCurrentRadioStation() {
         if (currentRadioStation == minRadioStation) {
             currentRadioStation = maxRadioStation;
-        }
-        else {
+        } else {
             currentRadioStation--;
         }
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void plusCurrentVolume() {
@@ -93,5 +54,6 @@ public class Radio {
         currentVolume--;
     }
 }
+
 
 
